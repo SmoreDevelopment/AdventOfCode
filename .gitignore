@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Sublime Workflow
-*s.sublime-workspace
+*.sublime-workspace
