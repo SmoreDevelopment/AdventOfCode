@@ -1,6 +1,27 @@
 import argparse
 import re
 
+# ------------------------------------------------------------------------------
+def validate_year(type: str, year: str, part_two: bool) -> bool:
+  """ Validate birth year
+  """
+
+  schemes = { 'byr': ['(byr:)\s*(\d4)', 1920, 2002],
+              'iyr': ['(iyr:)\s*(\d4)', 1920, 2002],
+              'eyr': ['(eyr:)\s*(\d4)', 1920, 2002],  }
+
+  valid = False
+
+  result = re.search(rschemes[type][0], year)
+
+  if result.group(1):
+    if not part_two:
+      valid = True
+    else:
+      if schemes[type][1] <= year_int int(result.group(2)) <= schemes[type][2]:
+        valid = True
+
+  return valid
 
 # ------------------------------------------------------------------------------
 def validate_passports(filename: str, part_two: bool) -> None:
@@ -42,9 +63,9 @@ def validate_passports(filename: str, part_two: bool) -> None:
 
     required_fields = 0
 
-    if re.search(r'byr:', passport):   required_fields += 1  # Birth Year
-    if re.search(r'iyr:', passport):   required_fields += 1  # Issue Year
-    if re.search(r'eyr:', passport):   required_fields += 1  # Expiration Year
+    if validate_year('byr', passport, part_two):   required_fields += 1  # Birth Year
+    if validate_year('iyr', passport, part_two):   required_fields += 1  # Issue Year
+    if validate_year('eyr', passport, part_two):   required_fields += 1  # Expiration Year
     if re.search(r'hgt:', passport):   required_fields += 1  # Height
     if re.search(r'hcl:', passport):   required_fields += 1  # Hair Color
     if re.search(r'ecl:', passport):   required_fields += 1  # Eye Color
