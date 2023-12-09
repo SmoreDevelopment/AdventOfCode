@@ -1,6 +1,6 @@
-# Advent Of Code 2020
+# Advent Of Code
 
-Here are my solutions to the [2020 Advent of Code](https://adventofcode.com/)
+Here are my solutions to the [Advent of Code](https://adventofcode.com/)
 
 I am using Python for my solutions to the puzzles.
 
